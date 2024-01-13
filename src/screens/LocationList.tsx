@@ -84,9 +84,7 @@ const LocationList = () => {
 
               <Spacer />
               <IconButton
-                onPress={() =>
-                  navigation.navigate("LocationEdit", { item: item })
-                }
+                onPress={() => navigation.navigate("LocationEdit", { item })}
                 _icon={{
                   as: MaterialCommunityIcons,
                   name: "chevron-right",

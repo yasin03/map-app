@@ -14,7 +14,7 @@ const ListStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="List"
+        name="LocationList"
         component={LocationList}
         options={{
           headerShown: false,

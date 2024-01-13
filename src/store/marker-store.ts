@@ -14,6 +14,7 @@ interface MarkerStore {
   addMarker: (marker: Omit<Marker, "id">) => void;
   updateMarker: (id: string, updatedMarker: Partial<Marker>) => void;
   clearMarkers: () => void;
+  removeMarker: (id: string) => void;
 }
 
 const useMarkerStore = create<MarkerStore>((set) => ({
@@ -46,6 +47,10 @@ const useMarkerStore = create<MarkerStore>((set) => ({
       markers: state.markers.map((marker) =>
         marker.id === id ? { ...marker, ...updatedMarker } : marker
       ),
+    })),
+  removeMarker: (id) =>
+    set((state) => ({
+      markers: state.markers.filter((marker) => marker.id !== id),
     })),
   clearMarkers: () => set({ markers: [] }),
 }));

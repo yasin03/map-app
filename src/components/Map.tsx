@@ -36,7 +36,6 @@ const Map = () => {
     setSelectedCoordinate(coordinate);
     setShowModal(true);
     console.log(coordinate);
-    
   };
 
   const handleSaveMarker = () => {
