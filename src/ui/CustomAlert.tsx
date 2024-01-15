@@ -1,5 +1,5 @@
-import { View, Text } from 'react-native'
 import React from 'react'
+import { Alert, CloseIcon, HStack, IconButton, Text, VStack } from 'native-base';
 
 const CustomAlert = () => {
   return (

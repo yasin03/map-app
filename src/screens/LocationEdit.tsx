@@ -1,4 +1,4 @@
-import { View, Text, Platform, StyleSheet } from "react-native";
+import { Alert, StyleSheet } from "react-native";
 import React, { useRef, useState } from "react";
 import {
   AlertDialog,
@@ -7,30 +7,30 @@ import {
   FormControl,
   Icon,
   Input,
-  KeyboardAvoidingView,
   ScrollView,
   Stack,
   WarningOutlineIcon,
 } from "native-base";
 import ColorPicker from "react-native-wheel-color-picker";
 import { Ionicons } from "@expo/vector-icons";
-import { ActivityIndicator } from "react-native";
 import useMarkerStore from "../store/marker-store";
-import CustomAlert from "../ui/CustomAlert";
 import Loading from "../ui/Loading";
+import { useNavigation } from "@react-navigation/native";
 
 const LocationEdit = ({ route }: any) => {
   const { item } = route.params;
+  console.log(item);
+
   const [latitude, setLatitude] = useState(item?.coordinate?.latitude);
   const [longitude, setLongitude] = useState(item?.coordinate?.longitude);
   const [name, setName] = useState(item?.name);
   const [showColorModal, setShowColorModal] = useState(false);
-  const [markerColor, setMarkerColor] = useState("#FF5733");
+  const [markerColor, setMarkerColor] = useState(item.color);
   const [isOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const markerStore = useMarkerStore();
   const onClose = () => setIsOpen(false);
-
+  const navigation = useNavigation();
   const cancelRef = useRef(null);
 
   const handleLatitudeChange = (text: string) => {
@@ -52,7 +52,8 @@ const LocationEdit = ({ route }: any) => {
       setLoading(true);
       await markerStore.removeMarker(item?.id);
       onClose();
-      return <CustomAlert />;
+      navigation.navigate("LocationList");
+      Alert.alert("Başarılı", "Silme işlemi başarıyla tamamlandı");
     } catch (error) {
       console.log(error);
     } finally {
@@ -74,7 +75,8 @@ const LocationEdit = ({ route }: any) => {
       setLoading(true);
       await markerStore.updateMarker(item?.id, newMarker);
       onClose();
-      return <CustomAlert />;
+      navigation.navigate("LocationList");
+      Alert.alert("Başarılı", "Güncelleme işlemi başarıyla tamamlandı");
     } catch (error) {
       console.log(error);
     } finally {
@@ -92,8 +94,7 @@ const LocationEdit = ({ route }: any) => {
               <FormControl.Label>Latitude</FormControl.Label>
               <Input
                 type="text"
-                value={latitude}
-                placeholder="Latitude"
+                value={latitude.toString()}
                 onChangeText={handleLatitudeChange}
                 maxLength={12}
               />
@@ -110,8 +111,7 @@ const LocationEdit = ({ route }: any) => {
               <FormControl.Label>Longitude</FormControl.Label>
               <Input
                 type="text"
-                value={longitude}
-                placeholder="Longitude"
+                value={longitude.toString()}
                 onChangeText={handleLongitudeChange}
                 maxLength={12}
               />

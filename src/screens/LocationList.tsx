@@ -1,19 +1,17 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet } from "react-native";
 import React from "react";
 import useMarkerStore from "../store/marker-store";
 import {
-  Avatar,
   Box,
   Text,
   FlatList,
   HStack,
   Heading,
-  VStack,
   Spacer,
   Icon,
   IconButton,
-  Tooltip,
   Popover,
+  Button,
 } from "native-base";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
@@ -23,6 +21,21 @@ const LocationList = () => {
   const markerStore = useMarkerStore();
   return (
     <Box>
+      <Button
+        colorScheme={"blue"}
+        m={"4"}
+        onPress={() => navigation.navigate("Rota Hesaplama")}
+        leftIcon={
+          <Icon
+            as={MaterialCommunityIcons}
+            name="road-variant"
+            size="lg"
+          />
+        }
+      >
+        Rota Göster
+      </Button>
+
       <Heading fontSize="xl" p="4" pb="3">
         Marker Listesi
       </Heading>
@@ -34,10 +47,12 @@ const LocationList = () => {
             _dark={{
               borderColor: "muted.50",
             }}
-            borderColor="muted.400"
+            borderColor="muted.300"
             pl={["4", "4"]}
             pr={["4", "5"]}
             py="2"
+            mx={"3"}
+            
           >
             <HStack
               space={[2, 3]}

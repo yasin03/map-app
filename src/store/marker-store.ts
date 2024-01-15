@@ -2,7 +2,7 @@ import { create } from "zustand";
 import "react-native-get-random-values";
 import { v4 as uuidv4 } from "uuid";
 
-interface Marker {
+export interface Marker {
   id: string;
   color: string;
   coordinate: { latitude: number; longitude: number };

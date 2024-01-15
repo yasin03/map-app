@@ -13,7 +13,7 @@ const Loading = () => {
       alignItems="center"
       bg="rgba(0,0,0,0.5)" // arkaplan rengi, isteğe bağlı
     >
-      <Spinner color="blue.500" size="lg"/>
+      <Spinner color="blue.500" size="lg" />
       <Text mt={4} color="white">
         Loading...
       </Text>

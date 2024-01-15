@@ -6,6 +6,7 @@ import LocationList from "../screens/LocationList";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LocationEdit from "../screens/LocationEdit";
+import RouteMap from "../screens/RouteMap";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -45,7 +46,7 @@ const Router = () => {
           }}
         />
         <Tab.Screen
-          name="List"
+          name="Marker Listesi"
           component={ListStack}
           options={{
             tabBarIcon: ({ color, focused }) => (
@@ -54,8 +55,8 @@ const Router = () => {
           }}
         />
         <Tab.Screen
-          name="List3"
-          component={LocationList}
+          name="Rota Hesaplama"
+          component={RouteMap}
           options={{
             tabBarIcon: ({ color, focused }) => (
               <Icon name="route" size={24} color={color} />
