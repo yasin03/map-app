@@ -18,26 +18,7 @@ interface MarkerStore {
 }
 
 const useMarkerStore = create<MarkerStore>((set) => ({
-  markers: [
-    {
-      coordinate: {
-        longitude: 41.103065,
-        latitude: 28.990749,
-      },
-      name: "Galatasaray",
-      color: "#FF0000",
-      id: uuidv4(),
-    },
-    {
-      coordinate: {
-        longitude: 40.987501,
-        latitude: 29.037051,
-      },
-      name: "Fenerbahçe",
-      color: "#120a8f",
-      id: uuidv4(),
-    },
-  ],
+  markers: [],
   addMarker: (marker) =>
     set((state) => ({
       markers: [...state.markers, { ...marker, id: uuidv4() }],

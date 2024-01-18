@@ -15,9 +15,12 @@ import {
 } from "native-base";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackNavigatorParamsList } from "../router/Router";
 
 const LocationList = () => {
-  const navigation = useNavigation();
+  const navigation =
+    useNavigation<StackNavigationProp<RootStackNavigatorParamsList>>();
   const markerStore = useMarkerStore();
   return (
     <Box>
@@ -26,11 +29,7 @@ const LocationList = () => {
         m={"4"}
         onPress={() => navigation.navigate("Rota Hesaplama")}
         leftIcon={
-          <Icon
-            as={MaterialCommunityIcons}
-            name="road-variant"
-            size="lg"
-          />
+          <Icon as={MaterialCommunityIcons} name="road-variant" size="lg" />
         }
       >
         Rota Göster
@@ -52,7 +51,6 @@ const LocationList = () => {
             pr={["4", "5"]}
             py="2"
             mx={"3"}
-            
           >
             <HStack
               space={[2, 3]}

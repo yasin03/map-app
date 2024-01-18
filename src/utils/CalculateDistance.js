@@ -1,4 +1,4 @@
-export const calculateDistance = (coord1, coord2) => {
+export const calculateDistance = async (coord1, coord2) => {
   const toRadians = (angle) => (angle * Math.PI) / 180;
 
   const R = 6371;
@@ -19,5 +19,3 @@ export const calculateDistance = (coord1, coord2) => {
 
   return distance;
 };
-
-

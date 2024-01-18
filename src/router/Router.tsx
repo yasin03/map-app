@@ -8,8 +8,16 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LocationEdit from "../screens/LocationEdit";
 import RouteMap from "../screens/RouteMap";
 
+export type RootStackNavigatorParamsList = {
+  LocationList: any;
+  LocationEdit: any;
+  Home: any;
+  "Marker Listesi": any;
+  "Rota Hesaplama": any;
+};
+
 const Tab = createBottomTabNavigator();
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackNavigatorParamsList>();
 
 const ListStack = () => {
   return (

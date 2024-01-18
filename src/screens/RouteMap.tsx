@@ -42,11 +42,13 @@ const RouteMap = () => {
     longitudeDelta: 0.5,
   };
 
-  const handleMarkerPress = (marker: any) => {
+  const handleMarkerPress = async (marker: any) => {
     setDestination(marker?.coordinate);
-    const dist = calculateDistance(location, destination);
-    setDistance(dist);
-    console.log(`İki koordinat arasındaki mesafe: ${dist} km`);
+    if (destination) {
+      const dist = await calculateDistance(location, destination);
+      setDistance(dist);
+      console.log(`İki koordinat arasındaki mesafe: ${dist} km`);
+    }
   };
 
   return (
@@ -70,7 +72,9 @@ const RouteMap = () => {
             description={` ${
               marker?.coordinate?.latitude +
               " - " +
-              marker?.coordinate?.longitude
+              marker?.coordinate?.longitude +
+              " - " +
+              distance
             }`}
             pinColor={marker?.color}
             onPress={() => handleMarkerPress(marker)}

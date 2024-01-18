@@ -16,10 +16,12 @@ import { Ionicons } from "@expo/vector-icons";
 import useMarkerStore from "../store/marker-store";
 import Loading from "../ui/Loading";
 import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackNavigatorParamsList } from "../router/Router";
+
 
 const LocationEdit = ({ route }: any) => {
   const { item } = route.params;
-  console.log(item);
 
   const [latitude, setLatitude] = useState(item?.coordinate?.latitude);
   const [longitude, setLongitude] = useState(item?.coordinate?.longitude);
@@ -30,7 +32,9 @@ const LocationEdit = ({ route }: any) => {
   const [loading, setLoading] = useState(false);
   const markerStore = useMarkerStore();
   const onClose = () => setIsOpen(false);
-  const navigation = useNavigation();
+ const navigation =
+   useNavigation<StackNavigationProp<RootStackNavigatorParamsList>>();
+
   const cancelRef = useRef(null);
 
   const handleLatitudeChange = (text: string) => {
