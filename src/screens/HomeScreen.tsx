@@ -17,8 +17,8 @@ const HomeScreen = () => {
   const markerStore = useMarkerStore();
 
   const INITIAL_REGION = {
-    latitude: 41.042176010125175,
-    longitude: 29.007133953273293,
+    latitude: 37.38384102799556,
+    longitude: -122.0685912296176,
     latitudeDelta: 0.1,
     longitudeDelta: 0.1,
   };

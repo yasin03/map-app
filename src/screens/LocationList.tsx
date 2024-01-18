@@ -31,6 +31,8 @@ const LocationList = () => {
         leftIcon={
           <Icon as={MaterialCommunityIcons} name="road-variant" size="lg" />
         }
+        disabled={markerStore.markers.length>0 ? false : true}
+        opacity={markerStore.markers.length>0 ? 100 : 50}
       >
         Rota Göster
       </Button>
